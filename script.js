@@ -1,5 +1,6 @@
 let container = document.getElementById('container')
 let sizebtn = document.querySelector('.gridsize')
+let color = 'black'
 
 function createGrid(x) {
     container.style.gridTemplateColumns = `repeat(${x}, 1fr)`
@@ -10,9 +11,7 @@ function createGrid(x) {
     for (let i = 0; i < numDivs; i++){
         let div = document.createElement('div')
         div.classList = "cell"
-        div.addEventListener('mouseover', () => {
-            div.style.backgroundColor = 'black'
-        })
+        div.addEventListener('mouseover', paint)
         container.insertAdjacentElement('beforeend', div)
     }
 }
@@ -27,6 +26,21 @@ function askSize(){
         alert("Only numbers please")
     }
     return input
+}
+
+function paint() {
+    if (color == 'random'){
+        this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
+    } else if (color == 'eraser') {
+        this.style.backgroundColor = 'white'
+    } else {
+        this.style.backgroundColor = 'black'
+    }
+
+}
+
+function setColor(colorChoice){
+    color = colorChoice
 }
 
 sizebtn.addEventListener("click", () => {
