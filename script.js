@@ -1,19 +1,19 @@
-let container = document.querySelector('.container')
+let container = document.getElementById('container')
 
 function createGrid(x) {
-    for (let i = 0; i < x; i++){
-        let column = document.createElement('div')
-        column.className = 'column'
-        for (let j = 0; j < x; j++){
-            let row = document.createElement('div')
-            row.className = 'row'
-            column.appendChild(row)
-        }
-    container.appendChild(column)
+    container.style.gridTemplateColumns = `repeat(${x}, 1fr)`
+    container.style.gridTemplateRows = `repeat(${x}, 1fr)`
+
+    let numDivs = x * x
+
+    for (let i = 0; i < numDivs; i++){
+        let div = document.createElement('div')
+        container.insertAdjacentElement('beforeend', div)
     }
 }
 
-let squares = document.querySelectorAll('.row')
+let paint = (e) => {
+    e.target.style.backgroundColor = 'black'
+}
 
-
-console.log(createGrid(9))
+console.log(createGrid(20))

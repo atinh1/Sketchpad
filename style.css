@@ -5,17 +5,10 @@
     padding: 20px;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    gap: 2px;
-}
-.row {
+#container {
+    display: grid;
     border: 1px solid black;
-    height: 20px;
-    width: 20px;
-}
-.column {
-    height: 20px;
-    width: 20px;
+    gap: 2px;
+    width: 600px;
+    height: 600px;
 }
